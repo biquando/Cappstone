@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E00B26CD2447CCA90050F2A4 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00B26CC2447CCA90050F2A4 /* Document.swift */; };
+		E00B26CF2447D4000050F2A4 /* DocumentDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00B26CE2447D4000050F2A4 /* DocumentDetail.swift */; };
+		E00B26D42447F8D40050F2A4 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00B26D32447F8D40050F2A4 /* UserData.swift */; };
 		E05C1D692446814000FB9736 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05C1D682446814000FB9736 /* AppDelegate.swift */; };
 		E05C1D6B2446814000FB9736 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05C1D6A2446814000FB9736 /* SceneDelegate.swift */; };
 		E05C1D6E2446814000FB9736 /* Cappstone.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E05C1D6C2446814000FB9736 /* Cappstone.xcdatamodeld */; };
-		E05C1D702446814000FB9736 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05C1D6F2446814000FB9736 /* ContentView.swift */; };
+		E05C1D702446814000FB9736 /* NewDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05C1D6F2446814000FB9736 /* NewDocument.swift */; };
 		E05C1D722446814200FB9736 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E05C1D712446814200FB9736 /* Assets.xcassets */; };
 		E05C1D752446814200FB9736 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E05C1D742446814200FB9736 /* Preview Assets.xcassets */; };
 		E05C1D782446814200FB9736 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E05C1D762446814200FB9736 /* LaunchScreen.storyboard */; };
-		E05C1D832446814200FB9736 /* CappstoneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05C1D822446814200FB9736 /* CappstoneTests.swift */; };
+		E05C1D8E244689CE00FB9736 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05C1D8D244689CE00FB9736 /* ImagePicker.swift */; };
+		E05C1D90244781A800FB9736 /* DocumentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05C1D8F244781A800FB9736 /* DocumentsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,18 +32,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E00B26CC2447CCA90050F2A4 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		E00B26CE2447D4000050F2A4 /* DocumentDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentDetail.swift; sourceTree = "<group>"; };
+		E00B26D32447F8D40050F2A4 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		E05C1D652446814000FB9736 /* Cappstone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cappstone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E05C1D682446814000FB9736 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E05C1D6A2446814000FB9736 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E05C1D6D2446814000FB9736 /* Cappstone.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cappstone.xcdatamodel; sourceTree = "<group>"; };
-		E05C1D6F2446814000FB9736 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E05C1D6F2446814000FB9736 /* NewDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDocument.swift; sourceTree = "<group>"; };
 		E05C1D712446814200FB9736 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E05C1D742446814200FB9736 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E05C1D772446814200FB9736 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E05C1D792446814200FB9736 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E05C1D7E2446814200FB9736 /* CappstoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CappstoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E05C1D822446814200FB9736 /* CappstoneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CappstoneTests.swift; sourceTree = "<group>"; };
-		E05C1D842446814200FB9736 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E05C1D8D244689CE00FB9736 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		E05C1D8F244781A800FB9736 /* DocumentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,11 +67,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E00B26D22447DE480050F2A4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E05C1D8F244781A800FB9736 /* DocumentsView.swift */,
+				E05C1D6F2446814000FB9736 /* NewDocument.swift */,
+				E00B26CE2447D4000050F2A4 /* DocumentDetail.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		E05C1D5C2446814000FB9736 = {
 			isa = PBXGroup;
 			children = (
 				E05C1D672446814000FB9736 /* Cappstone */,
-				E05C1D812446814200FB9736 /* CappstoneTests */,
 				E05C1D662446814000FB9736 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -83,7 +99,10 @@
 			children = (
 				E05C1D682446814000FB9736 /* AppDelegate.swift */,
 				E05C1D6A2446814000FB9736 /* SceneDelegate.swift */,
-				E05C1D6F2446814000FB9736 /* ContentView.swift */,
+				E00B26D22447DE480050F2A4 /* Views */,
+				E00B26CC2447CCA90050F2A4 /* Document.swift */,
+				E05C1D8D244689CE00FB9736 /* ImagePicker.swift */,
+				E00B26D32447F8D40050F2A4 /* UserData.swift */,
 				E05C1D712446814200FB9736 /* Assets.xcassets */,
 				E05C1D762446814200FB9736 /* LaunchScreen.storyboard */,
 				E05C1D792446814200FB9736 /* Info.plist */,
@@ -99,15 +118,6 @@
 				E05C1D742446814200FB9736 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		E05C1D812446814200FB9736 /* CappstoneTests */ = {
-			isa = PBXGroup;
-			children = (
-				E05C1D822446814200FB9736 /* CappstoneTests.swift */,
-				E05C1D842446814200FB9736 /* Info.plist */,
-			);
-			path = CappstoneTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,10 +221,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E00B26CD2447CCA90050F2A4 /* Document.swift in Sources */,
 				E05C1D692446814000FB9736 /* AppDelegate.swift in Sources */,
 				E05C1D6E2446814000FB9736 /* Cappstone.xcdatamodeld in Sources */,
-				E05C1D702446814000FB9736 /* ContentView.swift in Sources */,
+				E00B26D42447F8D40050F2A4 /* UserData.swift in Sources */,
+				E05C1D90244781A800FB9736 /* DocumentsView.swift in Sources */,
+				E05C1D8E244689CE00FB9736 /* ImagePicker.swift in Sources */,
+				E05C1D702446814000FB9736 /* NewDocument.swift in Sources */,
 				E05C1D6B2446814000FB9736 /* SceneDelegate.swift in Sources */,
+				E00B26CF2447D4000050F2A4 /* DocumentDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,7 +237,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E05C1D832446814200FB9736 /* CappstoneTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +385,7 @@
 				DEVELOPMENT_TEAM = 77F8P8DQKT;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Cappstone/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -391,6 +406,7 @@
 				DEVELOPMENT_TEAM = 77F8P8DQKT;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Cappstone/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
