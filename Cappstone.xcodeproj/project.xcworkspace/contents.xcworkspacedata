@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Cappstone.xcodeproj">
+      location = "group:../a.swift">
+   </FileRef>
+   <FileRef
+      location = "group:../Cappstone/Model">
+   </FileRef>
+   <FileRef
+      location = "self:">
    </FileRef>
 </Workspace>

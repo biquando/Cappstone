@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Foundation
+import Vision
 
 struct NewDocument: View {
     
@@ -19,7 +20,6 @@ struct NewDocument: View {
     
     @State private var textInput: String = ""
     @State private var title: String = ""
-    @State private var colorTheme: Color = .blue
     
     @Environment (\.managedObjectContext) var managedObjectContext
     @FetchRequest (fetchRequest: Document.getAllDocuments()) var documents: FetchedResults<Document>
@@ -40,6 +40,7 @@ struct NewDocument: View {
                     .padding(.leading)
                 Spacer()
             }
+            .padding(.top, 50)
             
             
             TextField("Title", text: $title)
@@ -58,6 +59,9 @@ struct NewDocument: View {
             
             
             Button(action: {
+                
+                // MARK: Create from Text
+                
                 let document = Document(context: self.managedObjectContext)
                 document.title = self.title == "" ? "Untitled Document" : self.title
                 document.text = self.textInput
@@ -77,7 +81,7 @@ struct NewDocument: View {
                 Text("Create Document")
                     .padding()
                     .frame(maxWidth: .infinity)
-                    .background(colorTheme)
+                    .background(Color.blue)
                     .cornerRadius(10)
                     .padding()
                     .foregroundColor(.white)
@@ -90,15 +94,14 @@ struct NewDocument: View {
             Button(action: {
                 self.showSheet = true
             }) {
-                Text("Upload Photo")
+                Text(image == nil ? "Upload Photo" : "Change Photo")
                     .padding()
                     .frame(maxWidth: .infinity)
-                    .background(colorTheme)
+                    .background(Color.blue)
                     .cornerRadius(10)
                     .padding()
                     .foregroundColor(.white)
             }
-                
             .actionSheet(isPresented: $showSheet) {
                 ActionSheet(title: Text("Upload Photo"),
                             buttons: [
@@ -116,11 +119,85 @@ struct NewDocument: View {
             
             
             
+            Button(action: {
+                if self.image == nil {
+                    return
+                }
+                
+                // MARK: Image Processing
+                
+                let cgImage = self.image!.cgImage
+                let myRequestHandler = VNImageRequestHandler(cgImage: cgImage!, options: [:])
+                let textRecognitionRequest = VNRecognizeTextRequest()
+                
+                textRecognitionRequest.recognitionLevel = .accurate
+                textRecognitionRequest.revision = VNRecognizeTextRequestRevision1
+                textRecognitionRequest.usesLanguageCorrection = true
+                
+                do {
+                    try myRequestHandler.perform([textRecognitionRequest])
+                } catch {}
+                
+                
+                guard let results = textRecognitionRequest.results as? [VNRecognizedTextObservation] else {
+                    return
+                }
+                
+                var resultingText = ""
+                
+                let maximumCandidates = 1
+                for result in results {
+                    guard let candidate = result.topCandidates(maximumCandidates).first else { continue }
+                    resultingText += candidate.string + " "
+                }
+                
+                
+                
+                // MARK: Create from Image
+                
+                let document = Document(context: self.managedObjectContext)
+                document.title = self.title == "" ? "Untitled Document" : self.title
+                document.text = resultingText
+                document.id = UUID()
+                print(document.id!)
+                document.isFavorited = false
+                
+                do {
+                    try self.managedObjectContext.save()
+                } catch {
+                    print(error)
+                }
+                
+                self.presentation.wrappedValue.dismiss()
+                
+                
+                
+            }) {
+                Text(image == nil ? "No photo selected" : "Submit")
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(image == nil ? Color.gray : Color.green)
+                    .cornerRadius(10)
+                    .padding()
+                    .foregroundColor(.white)
+            }
+            .offset(y: -20)
+            
+            
+            
         }.sheet(isPresented: $showImagePicker) {
             ImagePicker(image: self.$image, isShown: self.$showImagePicker, sourceType: self.sourceType)
         }.edgesIgnoringSafeArea(.top)
         
     
+    }
+    
+    
+    func processImage() -> String {
+        
+        
+        
+        return ""
     }
 }
 

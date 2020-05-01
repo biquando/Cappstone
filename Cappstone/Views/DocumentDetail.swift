@@ -33,6 +33,19 @@ struct DocumentDetail: View {
     var body: some View {
         VStack {
             
+            NavigationLink(destination: AnalyzeView(documentText: self.text)) {
+                Text("Analyze Document")
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.blue)
+                    .cornerRadius(10)
+                    .padding()
+                    .foregroundColor(.white)
+            }
+            .offset(y: -25)
+            
+            
+            
             HStack {
                 Text(title)
                     .font(.largeTitle)
@@ -41,7 +54,9 @@ struct DocumentDetail: View {
                     .padding(.leading)
                 
                 Spacer()
-            }.offset(y: -25)
+            }.offset(y: -15)
+            
+            
             
             HStack {
                 Text(text)

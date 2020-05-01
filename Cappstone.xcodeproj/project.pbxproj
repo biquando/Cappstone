@@ -10,6 +10,14 @@
 		E00B26CD2447CCA90050F2A4 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00B26CC2447CCA90050F2A4 /* Document.swift */; };
 		E00B26CF2447D4000050F2A4 /* DocumentDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00B26CE2447D4000050F2A4 /* DocumentDetail.swift */; };
 		E00B26D42447F8D40050F2A4 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00B26D32447F8D40050F2A4 /* UserData.swift */; };
+		E04D6842245B5A1A00D2E02C /* AnalyzeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04D6841245B5A1A00D2E02C /* AnalyzeView.swift */; };
+		E04D6849245B625B00D2E02C /* BERT.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04D6848245B625B00D2E02C /* BERT.swift */; };
+		E04D684B245B62BB00D2E02C /* BERTQAFP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E04D684A245B62BB00D2E02C /* BERTQAFP16.mlmodel */; };
+		E04D684D245B632D00D2E02C /* BERTInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04D684C245B632D00D2E02C /* BERTInput.swift */; };
+		E04D684F245B636400D2E02C /* BERTOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04D684E245B636400D2E02C /* BERTOutput.swift */; };
+		E04D6851245B637E00D2E02C /* BERTVocabulary.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04D6850245B637E00D2E02C /* BERTVocabulary.swift */; };
+		E04D6853245B639900D2E02C /* TokenizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04D6852245B639900D2E02C /* TokenizedString.swift */; };
+		E04D6855245B63C400D2E02C /* bert-base-uncased-vocab.txt in Resources */ = {isa = PBXBuildFile; fileRef = E04D6854245B63C400D2E02C /* bert-base-uncased-vocab.txt */; };
 		E05C1D692446814000FB9736 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05C1D682446814000FB9736 /* AppDelegate.swift */; };
 		E05C1D6B2446814000FB9736 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05C1D6A2446814000FB9736 /* SceneDelegate.swift */; };
 		E05C1D6E2446814000FB9736 /* Cappstone.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E05C1D6C2446814000FB9736 /* Cappstone.xcdatamodeld */; };
@@ -35,6 +43,14 @@
 		E00B26CC2447CCA90050F2A4 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		E00B26CE2447D4000050F2A4 /* DocumentDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentDetail.swift; sourceTree = "<group>"; };
 		E00B26D32447F8D40050F2A4 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		E04D6841245B5A1A00D2E02C /* AnalyzeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzeView.swift; sourceTree = "<group>"; };
+		E04D6848245B625B00D2E02C /* BERT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BERT.swift; sourceTree = "<group>"; };
+		E04D684A245B62BB00D2E02C /* BERTQAFP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = BERTQAFP16.mlmodel; path = ../../../../Desktop/BERTQAFP16.mlmodel; sourceTree = "<group>"; };
+		E04D684C245B632D00D2E02C /* BERTInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BERTInput.swift; sourceTree = "<group>"; };
+		E04D684E245B636400D2E02C /* BERTOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BERTOutput.swift; sourceTree = "<group>"; };
+		E04D6850245B637E00D2E02C /* BERTVocabulary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BERTVocabulary.swift; sourceTree = "<group>"; };
+		E04D6852245B639900D2E02C /* TokenizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenizedString.swift; sourceTree = "<group>"; };
+		E04D6854245B63C400D2E02C /* bert-base-uncased-vocab.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "bert-base-uncased-vocab.txt"; path = "../../../../Desktop/bert-base-uncased-vocab.txt"; sourceTree = "<group>"; };
 		E05C1D652446814000FB9736 /* Cappstone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cappstone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E05C1D682446814000FB9736 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E05C1D6A2446814000FB9736 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,8 +89,23 @@
 				E05C1D8F244781A800FB9736 /* DocumentsView.swift */,
 				E05C1D6F2446814000FB9736 /* NewDocument.swift */,
 				E00B26CE2447D4000050F2A4 /* DocumentDetail.swift */,
+				E04D6841245B5A1A00D2E02C /* AnalyzeView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		E04D6847245B61F300D2E02C /* BERTModel */ = {
+			isa = PBXGroup;
+			children = (
+				E04D6848245B625B00D2E02C /* BERT.swift */,
+				E04D684C245B632D00D2E02C /* BERTInput.swift */,
+				E04D684E245B636400D2E02C /* BERTOutput.swift */,
+				E04D6850245B637E00D2E02C /* BERTVocabulary.swift */,
+				E04D6852245B639900D2E02C /* TokenizedString.swift */,
+				E04D684A245B62BB00D2E02C /* BERTQAFP16.mlmodel */,
+				E04D6854245B63C400D2E02C /* bert-base-uncased-vocab.txt */,
+			);
+			path = BERTModel;
 			sourceTree = "<group>";
 		};
 		E05C1D5C2446814000FB9736 = {
@@ -100,6 +131,7 @@
 				E05C1D682446814000FB9736 /* AppDelegate.swift */,
 				E05C1D6A2446814000FB9736 /* SceneDelegate.swift */,
 				E00B26D22447DE480050F2A4 /* Views */,
+				E04D6847245B61F300D2E02C /* BERTModel */,
 				E00B26CC2447CCA90050F2A4 /* Document.swift */,
 				E05C1D8D244689CE00FB9736 /* ImagePicker.swift */,
 				E00B26D32447F8D40050F2A4 /* UserData.swift */,
@@ -203,6 +235,7 @@
 			files = (
 				E05C1D782446814200FB9736 /* LaunchScreen.storyboard in Resources */,
 				E05C1D752446814200FB9736 /* Preview Assets.xcassets in Resources */,
+				E04D6855245B63C400D2E02C /* bert-base-uncased-vocab.txt in Resources */,
 				E05C1D722446814200FB9736 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -222,12 +255,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				E00B26CD2447CCA90050F2A4 /* Document.swift in Sources */,
+				E04D6851245B637E00D2E02C /* BERTVocabulary.swift in Sources */,
 				E05C1D692446814000FB9736 /* AppDelegate.swift in Sources */,
 				E05C1D6E2446814000FB9736 /* Cappstone.xcdatamodeld in Sources */,
+				E04D6853245B639900D2E02C /* TokenizedString.swift in Sources */,
 				E00B26D42447F8D40050F2A4 /* UserData.swift in Sources */,
 				E05C1D90244781A800FB9736 /* DocumentsView.swift in Sources */,
+				E04D684D245B632D00D2E02C /* BERTInput.swift in Sources */,
+				E04D684B245B62BB00D2E02C /* BERTQAFP16.mlmodel in Sources */,
 				E05C1D8E244689CE00FB9736 /* ImagePicker.swift in Sources */,
 				E05C1D702446814000FB9736 /* NewDocument.swift in Sources */,
+				E04D684F245B636400D2E02C /* BERTOutput.swift in Sources */,
+				E04D6842245B5A1A00D2E02C /* AnalyzeView.swift in Sources */,
+				E04D6849245B625B00D2E02C /* BERT.swift in Sources */,
 				E05C1D6B2446814000FB9736 /* SceneDelegate.swift in Sources */,
 				E00B26CF2447D4000050F2A4 /* DocumentDetail.swift in Sources */,
 			);
