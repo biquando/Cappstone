@@ -27,7 +27,7 @@ class BERT {
         guard bertInput.totalTokenSize <= BERTInput.maxTokens else {
             var message = "Text and question are too long"
             message += " (\(bertInput.totalTokenSize) tokens)"
-            message += " for the BERT model's \(BERTInput.maxTokens) token limit."
+            message += " for the model's \(BERTInput.maxTokens) token limit."
             return Substring(message)
         }
         
@@ -36,7 +36,7 @@ class BERT {
         
         // Make a prediction with the BERT model.
         guard let prediction = try? bertModel.prediction(input: modelInput) else {
-            return "The BERT model is unable to make a prediction."
+            return "The model is unable to make a prediction."
         }
 
         // Analyze the output form the BERT model.

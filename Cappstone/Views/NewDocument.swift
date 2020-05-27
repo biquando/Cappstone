@@ -16,6 +16,10 @@ struct NewDocument: View {
     @State private var showImagePicker: Bool = false
     @State private var sourceType: UIImagePickerController.SourceType = .camera
     
+    @State private var isShowingScannerSheet = false
+    @State private var cameraText: String = ""
+    @State private var scanAttempted = false
+    
     @State private var image: UIImage?
     
     @State private var textInput: String = ""
@@ -40,13 +44,14 @@ struct NewDocument: View {
                     .padding(.leading)
                 Spacer()
             }
-            .padding(.top, 50)
+            .padding(.top, 80)
             
             
             TextField("Title", text: $title)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding(.horizontal)
                 .offset(y: -10)
+                .modifier(ClearButton(text: $title, yOffset: -10))
             
             
             Divider()
@@ -55,10 +60,15 @@ struct NewDocument: View {
             TextField("Paste text here", text: $textInput)
             .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding([.horizontal, .top])
+                .modifier(ClearButton(text: $textInput, yOffset: 10))
             
             
             
             Button(action: {
+                
+                if self.textInput == "" {
+                    return
+                }
                 
                 // MARK: Create from Text
                 
@@ -81,7 +91,7 @@ struct NewDocument: View {
                 Text("Create Document")
                     .padding()
                     .frame(maxWidth: .infinity)
-                    .background(Color.blue)
+                    .background(self.textInput == "" ? Color.gray : Color.green)
                     .cornerRadius(10)
                     .padding()
                     .foregroundColor(.white)
@@ -94,7 +104,7 @@ struct NewDocument: View {
             Button(action: {
                 self.showSheet = true
             }) {
-                Text(image == nil ? "Upload Photo" : "Change Photo")
+                Text(cameraText == "" && image == nil ? "Upload Photo" : "Change Photo")
                     .padding()
                     .frame(maxWidth: .infinity)
                     .background(Color.blue)
@@ -120,35 +130,37 @@ struct NewDocument: View {
             
             
             Button(action: {
-                if self.image == nil {
+                if self.cameraText == "" && self.image == nil {
                     return
                 }
                 
                 // MARK: Image Processing
                 
-                let cgImage = self.image!.cgImage
-                let myRequestHandler = VNImageRequestHandler(cgImage: cgImage!, options: [:])
-                let textRecognitionRequest = VNRecognizeTextRequest()
+                if self.image != nil {
                 
-                textRecognitionRequest.recognitionLevel = .accurate
-                textRecognitionRequest.revision = VNRecognizeTextRequestRevision1
-                textRecognitionRequest.usesLanguageCorrection = true
-                
-                do {
-                    try myRequestHandler.perform([textRecognitionRequest])
-                } catch {}
-                
-                
-                guard let results = textRecognitionRequest.results as? [VNRecognizedTextObservation] else {
-                    return
-                }
-                
-                var resultingText = ""
-                
-                let maximumCandidates = 1
-                for result in results {
-                    guard let candidate = result.topCandidates(maximumCandidates).first else { continue }
-                    resultingText += candidate.string + " "
+                    let cgImage = self.image!.cgImage
+                    let myRequestHandler = VNImageRequestHandler(cgImage: cgImage!, options: [:])
+                    let textRecognitionRequest = VNRecognizeTextRequest()
+
+                    textRecognitionRequest.recognitionLevel = .accurate
+                    textRecognitionRequest.revision = VNRecognizeTextRequestRevision1
+                    textRecognitionRequest.usesLanguageCorrection = true
+
+                    do {
+                        try myRequestHandler.perform([textRecognitionRequest])
+                    } catch {}
+
+
+                    guard let results = textRecognitionRequest.results as? [VNRecognizedTextObservation] else {
+                        return
+                    }
+
+                    let maximumCandidates = 1
+                    self.cameraText = ""
+                    for result in results {
+                        guard let candidate = result.topCandidates(maximumCandidates).first else { continue }
+                        self.cameraText += candidate.string + " "
+                    }
                 }
                 
                 
@@ -157,7 +169,7 @@ struct NewDocument: View {
                 
                 let document = Document(context: self.managedObjectContext)
                 document.title = self.title == "" ? "Untitled Document" : self.title
-                document.text = resultingText
+                document.text = self.cameraText
                 document.id = UUID()
                 print(document.id!)
                 document.isFavorited = false
@@ -173,10 +185,10 @@ struct NewDocument: View {
                 
                 
             }) {
-                Text(image == nil ? "No photo selected" : "Submit")
+                Text(cameraText == "" && image == nil ? "No photo selected" : "Submit")
                     .padding()
                     .frame(maxWidth: .infinity)
-                    .background(image == nil ? Color.gray : Color.green)
+                    .background(cameraText == "" && image == nil ? Color.gray : Color.green)
                     .cornerRadius(10)
                     .padding()
                     .foregroundColor(.white)
@@ -184,21 +196,41 @@ struct NewDocument: View {
             .offset(y: -20)
             
             
+            if scanAttempted && cameraText == "" && image == nil {
+                Text("Couldn't find any text")
+                    .foregroundColor(.red)
+                    .offset(y: -20)
+            }
+            
+            
             
         }.sheet(isPresented: $showImagePicker) {
-            ImagePicker(image: self.$image, isShown: self.$showImagePicker, sourceType: self.sourceType)
+            if self.sourceType == .camera {
+                self.makeScannerView()
+            } else {
+                ImagePicker(image: self.$image, isShown: self.$showImagePicker, sourceType: self.sourceType)
+            }
         }.edgesIgnoringSafeArea(.top)
         
     
     }
     
     
-    func processImage() -> String {
-        
-        
-        
-        return ""
+    private func openCamera() {
+        showImagePicker = true
     }
+     
+    private func makeScannerView() -> ScannerView {
+        ScannerView(completion: { textPerPage in
+            if let text = textPerPage?.joined(separator: "\n").trimmingCharacters(in: .whitespacesAndNewlines) {
+                self.cameraText = text
+                self.scanAttempted = true
+                self.image = nil
+            }
+            self.showImagePicker = false
+        })
+    }
+    
 }
 
 struct NewDocument_Previews: PreviewProvider {

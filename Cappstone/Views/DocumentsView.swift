@@ -13,24 +13,35 @@ struct DocumentsView: View {
     @Environment (\.managedObjectContext) var managedObjectContext
     @FetchRequest (fetchRequest: Document.getAllDocuments()) var documents: FetchedResults<Document>
     
-    @EnvironmentObject private var userData: UserData
+    @EnvironmentObject var userData: UserData
+    
+    var bertModel = BERT()
     
     var body: some View {
         
         NavigationView() {
             VStack {
                 
+                TextField("Search", text: $userData.searchText)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.horizontal)
+                    .modifier(ClearButton(text: $userData.searchText))
+                
+                
                 List {
                     
                     Toggle(isOn: $userData.showFavoritesOnly) {
                         Text("Favorites Only")
                     }
+                    
                 
                     ForEach(self.documents) { document in
                         
-                        if !self.userData.showFavoritesOnly || document.isFavorited {
+                        // Show document based on isFavorited and searchText
+                        if !(self.userData.showFavoritesOnly && !document.isFavorited ||
+                             self.userData.searchText != "" && document.title!.range(of: self.userData.searchText, options: .caseInsensitive) == nil) {
                         
-                            NavigationLink(destination: DocumentDetail(document: document)) {
+                            NavigationLink(destination: DocumentDetail(document: document, bertModel: self.bertModel)) {
                                 HStack {
                                     Text(document.title!)
                                     
@@ -67,8 +78,9 @@ struct DocumentsView: View {
                 .navigationBarTitle("Documents")
                 .navigationBarItems(trailing:
                     NavigationLink(destination: NewDocument()) {
-                        Image(systemName: "plus.circle")
+                        Image(systemName: "plus.circle.fill")
                             .imageScale(.large)
+                            .foregroundColor(.green)
                     }
                 )
                 

@@ -19,10 +19,12 @@ struct DocumentDetail: View {
     var id: UUID = UUID()
     
     var document: Document
+    var bertModel: BERT
     
-    init(document: Document) {
+    init(document: Document, bertModel: BERT) {
         
         self.document = document
+        self.bertModel = bertModel
         
         title = document.title!
         text = document.text!
@@ -31,61 +33,66 @@ struct DocumentDetail: View {
     }
     
     var body: some View {
-        VStack {
-            
-            NavigationLink(destination: AnalyzeView(documentText: self.text)) {
-                Text("Analyze Document")
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.blue)
-                    .cornerRadius(10)
-                    .padding()
-                    .foregroundColor(.white)
-            }
-            .offset(y: -25)
-            
-            
-            
-            HStack {
-                Text(title)
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .multilineTextAlignment(.leading)
-                    .padding(.leading)
+        ScrollView {
+        
+            VStack {
                 
-                Spacer()
-            }.offset(y: -15)
-            
-            
-            
-            HStack {
-                Text(text)
-                    .multilineTextAlignment(.leading)
-                    .padding(.leading)
                 
-                Spacer()
-            }
-            
-            Spacer()
-            
-            .navigationBarItems(trailing:
-                Button(action: {
-                    self.document.isFavorited.toggle()
-                    do {
-                        try self.managedObjectContext.save()
-                    } catch {
-                        print(error)
-                    }
-                }) {
-                    if self.document.isFavorited {
-                        Image(systemName: "star.fill")
-                            .foregroundColor(.yellow)
-                    } else {
-                        Image(systemName: "star")
-                            .foregroundColor(.gray)
-                    }
+                HStack {
+                    Text(title)
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .multilineTextAlignment(.leading)
+                        .padding(.leading)
+                    
+                    Spacer()
+                }.offset(y: -15)
+                
+                
+                
+                HStack {
+                    Text(text)
+                        .multilineTextAlignment(.leading)
+                        .padding(.leading)
+                    
+                    Spacer()
                 }
-            )
+                .padding(.bottom, 30)
+                
+                
+                    
+                NavigationLink(destination: AnalyzeView(documentText: self.text, bertModel: self.bertModel)) {
+                    Text("Analyze Document")
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                        .padding()
+                        .foregroundColor(.white)
+                }
+                .offset(y: -25)
+                    
+                    
+                
+                .navigationBarItems(trailing:
+                    Button(action: {
+                        self.document.isFavorited.toggle()
+                        do {
+                            try self.managedObjectContext.save()
+                        } catch {
+                            print(error)
+                        }
+                    }) {
+                        if self.document.isFavorited {
+                            Image(systemName: "star.fill")
+                                .foregroundColor(.yellow)
+                        } else {
+                            Image(systemName: "star")
+                                .foregroundColor(.gray)
+                        }
+                    }
+                )
+            }
         }
         
     }
@@ -93,6 +100,6 @@ struct DocumentDetail: View {
 
 struct DocumentDetail_Previews: PreviewProvider {
     static var previews: some View {
-        DocumentDetail(document: Document())
+        DocumentDetail(document: Document(), bertModel: BERT())
     }
 }

@@ -10,6 +10,8 @@
 		E00B26CD2447CCA90050F2A4 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00B26CC2447CCA90050F2A4 /* Document.swift */; };
 		E00B26CF2447D4000050F2A4 /* DocumentDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00B26CE2447D4000050F2A4 /* DocumentDetail.swift */; };
 		E00B26D42447F8D40050F2A4 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00B26D32447F8D40050F2A4 /* UserData.swift */; };
+		E01892A0246084A500111C78 /* TextRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E018929F246084A500111C78 /* TextRecognizer.swift */; };
+		E01892A2246084F100111C78 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01892A1246084F100111C78 /* ScannerView.swift */; };
 		E04D6842245B5A1A00D2E02C /* AnalyzeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04D6841245B5A1A00D2E02C /* AnalyzeView.swift */; };
 		E04D6849245B625B00D2E02C /* BERT.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04D6848245B625B00D2E02C /* BERT.swift */; };
 		E04D684B245B62BB00D2E02C /* BERTQAFP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E04D684A245B62BB00D2E02C /* BERTQAFP16.mlmodel */; };
@@ -27,6 +29,7 @@
 		E05C1D782446814200FB9736 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E05C1D762446814200FB9736 /* LaunchScreen.storyboard */; };
 		E05C1D8E244689CE00FB9736 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05C1D8D244689CE00FB9736 /* ImagePicker.swift */; };
 		E05C1D90244781A800FB9736 /* DocumentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05C1D8F244781A800FB9736 /* DocumentsView.swift */; };
+		E08676972473C22D000EF164 /* ClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08676962473C22D000EF164 /* ClearButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +46,8 @@
 		E00B26CC2447CCA90050F2A4 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		E00B26CE2447D4000050F2A4 /* DocumentDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentDetail.swift; sourceTree = "<group>"; };
 		E00B26D32447F8D40050F2A4 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		E018929F246084A500111C78 /* TextRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognizer.swift; sourceTree = "<group>"; };
+		E01892A1246084F100111C78 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
 		E04D6841245B5A1A00D2E02C /* AnalyzeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzeView.swift; sourceTree = "<group>"; };
 		E04D6848245B625B00D2E02C /* BERT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BERT.swift; sourceTree = "<group>"; };
 		E04D684A245B62BB00D2E02C /* BERTQAFP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = BERTQAFP16.mlmodel; path = ../../../../Desktop/BERTQAFP16.mlmodel; sourceTree = "<group>"; };
@@ -63,6 +68,7 @@
 		E05C1D7E2446814200FB9736 /* CappstoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CappstoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E05C1D8D244689CE00FB9736 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		E05C1D8F244781A800FB9736 /* DocumentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsView.swift; sourceTree = "<group>"; };
+		E08676962473C22D000EF164 /* ClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +96,8 @@
 				E05C1D6F2446814000FB9736 /* NewDocument.swift */,
 				E00B26CE2447D4000050F2A4 /* DocumentDetail.swift */,
 				E04D6841245B5A1A00D2E02C /* AnalyzeView.swift */,
+				E05C1D8D244689CE00FB9736 /* ImagePicker.swift */,
+				E01892A1246084F100111C78 /* ScannerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -133,8 +141,9 @@
 				E00B26D22447DE480050F2A4 /* Views */,
 				E04D6847245B61F300D2E02C /* BERTModel */,
 				E00B26CC2447CCA90050F2A4 /* Document.swift */,
-				E05C1D8D244689CE00FB9736 /* ImagePicker.swift */,
 				E00B26D32447F8D40050F2A4 /* UserData.swift */,
+				E018929F246084A500111C78 /* TextRecognizer.swift */,
+				E08676962473C22D000EF164 /* ClearButton.swift */,
 				E05C1D712446814200FB9736 /* Assets.xcassets */,
 				E05C1D762446814200FB9736 /* LaunchScreen.storyboard */,
 				E05C1D792446814200FB9736 /* Info.plist */,
@@ -263,10 +272,13 @@
 				E05C1D90244781A800FB9736 /* DocumentsView.swift in Sources */,
 				E04D684D245B632D00D2E02C /* BERTInput.swift in Sources */,
 				E04D684B245B62BB00D2E02C /* BERTQAFP16.mlmodel in Sources */,
+				E01892A2246084F100111C78 /* ScannerView.swift in Sources */,
 				E05C1D8E244689CE00FB9736 /* ImagePicker.swift in Sources */,
 				E05C1D702446814000FB9736 /* NewDocument.swift in Sources */,
 				E04D684F245B636400D2E02C /* BERTOutput.swift in Sources */,
 				E04D6842245B5A1A00D2E02C /* AnalyzeView.swift in Sources */,
+				E08676972473C22D000EF164 /* ClearButton.swift in Sources */,
+				E01892A0246084A500111C78 /* TextRecognizer.swift in Sources */,
 				E04D6849245B625B00D2E02C /* BERT.swift in Sources */,
 				E05C1D6B2446814000FB9736 /* SceneDelegate.swift in Sources */,
 				E00B26CF2447D4000050F2A4 /* DocumentDetail.swift in Sources */,

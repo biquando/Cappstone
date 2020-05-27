@@ -15,7 +15,7 @@ struct AnalyzeView: View {
     @State var answer: String = ""
     @State var question: String = ""
     
-    var bert = BERT()
+    var bertModel: BERT
     
     let offset: CGFloat = -200
     
@@ -27,29 +27,16 @@ struct AnalyzeView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding([.horizontal])
                 .offset(y: offset)
+                .modifier(ClearButton(text: $question, yOffset: offset))
             
             
             HStack {
-                
-                Button(action: {
-                    self.question = ""
-                }) {
-                    Text("Clear")
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.red)
-                        .cornerRadius(10)
-                        .padding([.top, .leading, .bottom])
-                        .foregroundColor(.white)
-                }
-                .offset(y: offset)
-                
             
                 Button(action: {
                     
-                    // All the searching is done here
-                    let searchText = self.question
-                    let bertAnswer = self.bert.findAnswer(for: searchText, in: self.documentText)
+                    // MARK: Search Document
+                    
+                    let bertAnswer = self.bertModel.findAnswer(for: self.question, in: self.documentText)
                     self.answer = String(bertAnswer)
                     
                 }) {
@@ -58,7 +45,7 @@ struct AnalyzeView: View {
                         .frame(maxWidth: .infinity)
                         .background(Color.blue)
                         .cornerRadius(10)
-                        .padding([.top, .bottom, .trailing])
+                        .padding()
                         .foregroundColor(.white)
                 }
                 .offset(y: offset)
@@ -74,6 +61,6 @@ struct AnalyzeView: View {
 
 struct AnalyzeView_Previews: PreviewProvider {
     static var previews: some View {
-        AnalyzeView(documentText: "The quick brown fox jumps over the lazy dog.")
+        AnalyzeView(documentText: "The quick brown fox jumps over the lazy dog.", bertModel: BERT())
     }
 }
